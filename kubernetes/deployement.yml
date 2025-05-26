@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: snake-game-deployment
+  labels:
+    app: snake-game
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: snake-game
+  template:
+    metadata:
+      labels:
+        app: snake-game
+    spec:
+      containers:
+        - name: snake-game
+          image: ghcr.io/stkef/snake-game-ts-docker:latest  # Will be replaced by CI
+          ports:
+            - containerPort: 3000
